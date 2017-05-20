@@ -7,7 +7,13 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
+
 import javax.swing.JFrame;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Random;
 
 
@@ -37,22 +43,30 @@ public class drawing_pixels_txt implements GLEventListener{
    public void display(GLAutoDrawable drawable) {
       final GL2 gl = drawable.getGL().getGL2();
       
-      Random rand = new Random();
-      int rangeMin = -1;
-      int rangeMax = 1;
-       	  gl.glBegin (GL2.GL_POINTS);//static field
-       	  for(int i = 0; i < 100; i++){
-       		  float x = rangeMin + (rangeMax - rangeMin) * rand.nextFloat();
-       		  float y = rangeMin + (rangeMax - rangeMin) * rand.nextFloat();
-       		  System.out.println("x: " + x + " " + "y: " + y);
-       		  gl.glVertex2d(x, y);
-       	  }
-//          gl.glVertex2d(0.5f,0.5f);
-//          gl.glVertex2d(0.5f,-0.5f);
-//          gl.glVertex2d(-0.5f,0.5f);
-//          gl.glVertex2d(-0.5f,-0.5f);
-          gl.glEnd();
-          
+      float x = 0;
+      float y = 0;
+      
+      try{
+    	  File f = new File("src/file/co-ordinates.txt");
+    	  
+    	  BufferedReader br = new BufferedReader(new FileReader(f));
+    	  
+    	  String readLine = "";
+    	  
+    	  //System.out.println("Reading file using Buffered Reader");
+    	  
+    	  gl.glBegin (GL2.GL_POINTS);
+    	  while((readLine = br.readLine()) != null){
+    		  x = Float.parseFloat(readLine);
+    		  y = Float.parseFloat(br.readLine());
+    		  gl.glVertex2d(x, y);
+    		  System.out.println("x: " + x + " " + "y: " + y);    		  
+    	  }
+    	  gl.glEnd();
+    	  
+      }catch(IOException e){
+    	  e.printStackTrace();
+      }    
       
    }
    

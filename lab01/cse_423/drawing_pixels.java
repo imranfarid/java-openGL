@@ -41,16 +41,13 @@ public class drawing_pixels implements GLEventListener{
       int rangeMin = -1;
       int rangeMax = 1;
        	  gl.glBegin (GL2.GL_POINTS);//static field
-       	  for(int i = 0; i < 100; i++){
+       	  for(int i = 0; i < 20; i++){
+       		  //random float between -1 & 1
        		  float x = rangeMin + (rangeMax - rangeMin) * rand.nextFloat();
        		  float y = rangeMin + (rangeMax - rangeMin) * rand.nextFloat();
        		  System.out.println("x: " + x + " " + "y: " + y);
        		  gl.glVertex2d(x, y);
        	  }
-//          gl.glVertex2d(0.5f,0.5f);
-//          gl.glVertex2d(0.5f,-0.5f);
-//          gl.glVertex2d(-0.5f,0.5f);
-//          gl.glVertex2d(-0.5f,-0.5f);
           gl.glEnd();
           
       
