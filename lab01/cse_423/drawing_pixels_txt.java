@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import java.util.Random;
 
 
-public class drawing_pixels implements GLEventListener{
+public class drawing_pixels_txt implements GLEventListener{
 	
 	static GLProfile profile = GLProfile.get(GLProfile.GL2);
     static GLCapabilities capabilities = new GLCapabilities(profile);
@@ -22,7 +22,7 @@ public class drawing_pixels implements GLEventListener{
 	      //getting the capabilities object of GL2 profile
 	   	  
 	   
-	      drawing_pixels l = new drawing_pixels();
+	      drawing_pixels_txt l = new drawing_pixels_txt();
 	      //creating frame
 	      glcanvas.addGLEventListener(l);
 	      glcanvas.setSize(600, 400);
