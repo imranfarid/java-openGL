@@ -41,7 +41,7 @@ public class dda_algorithm implements GLEventListener{
       Random rand = new Random();
       int rangeMin = -1;
       int rangeMax = 1;
-      float m, x_init, x_next, y_next;
+      float m, x_next, y_next;
 
              //gl.glBegin (GL2.GL_POINTS);//static field
              for(int i = 0; i < 1; i++){
@@ -80,7 +80,7 @@ public class dda_algorithm implements GLEventListener{
 	               System.out.println("end of for");
 	               
 	               if(m > -1 && m < 1){
-	                  x_init = x1;
+	                 
 	                   while(x1 < x2){
 	                       
 	                       x_next = (float) (x1 + (1* 0.000001)) ;
@@ -94,7 +94,7 @@ public class dda_algorithm implements GLEventListener{
 	                      
 	                   }
 	               }else{
-	                  x_init = x1;
+	                  
 	                  while(y1 < y2){
 	                      
 	                      x_next = (float) (x1 + ((1/m) * 0.000001));
