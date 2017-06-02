@@ -1,6 +1,7 @@
 package cse_423;
 
 //import java.util.Random;
+import java.util.Scanner;
 
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
@@ -43,71 +44,128 @@ public class scan_conversion_line implements GLEventListener{
       //int rangeMax = 1;
       float m, dy, dx, d, x0, x1, y0, y1, x, y;
       //int x0, x1, y0, y1, x, y;
+      
+      Scanner scan = new Scanner(System.in);
+      System.out.println("Enter x0");
+      x0 = scan.nextInt();
+      System.out.println("Enter x1");
+      x1 = scan.nextInt();
+      System.out.println("Enter y0");
+      y0 = scan.nextInt();
+      System.out.println("Enter y1");
+      y1 = scan.nextInt();
+      
  
              //gl.glBegin (GL2.GL_POINTS);//static field
              for(int i = 0; i < 1; i++){
-                 //random float between -1 & 1
-                 /*
-                 float x1 = rangeMin + (rangeMax - rangeMin) * rand.nextFloat();
-                 float y1 = rangeMin + (rangeMax - rangeMin) * rand.nextFloat();
-                 float x2 = rangeMin + (rangeMax - rangeMin) * rand.nextFloat();
-                 float y2 = rangeMin + (rangeMax - rangeMin) * rand.nextFloat();
-                 */
-                 x0 = 4;
-                 x1 = 9;
-                 y0 = 8;
-                 y1 = 12;
+                 
+                 x0 = (float)(x0 * 0.1);
+                 x1 = (float)(x1 * 0.1);
+                 y0 = (float)(y0 * 0.1);
+                 y1 = (float)(y1 * 0.1);
+                 
+                 
+            	 
                  dy = (float)(y1-y0);
                  dx = (float)(x1-x0);
-                 m = (float)(dy/dx); //slope
+                 
+                 // calculating slope
+                 m = (float)(dy/dx); 
                  
                  System.out.println("dy: " + dy + " " + " dx: " + dx + " " + "m: " + m);
-                 gl.glBegin (GL2.GL_POINTS);
+                 System.out.println("abs(m): " + Math.abs(m));
+                 //gl.glBegin (GL2.GL_POINTS);
                  
-                 if(Math.abs(m) < 1){
+                 if(m == 1){
+                	 
+                	 System.out.println("m is 1");
                      d = dy-(dx/2);
                      System.out.println(d);
-                     x = x0;
-                     y = y0;
-                    
+                     x = (float)(x0 * 0.001);
+                     y = (float)(y0 * 0.001);
+                     
+                     gl.glBegin (GL2.GL_POINTS);
                      gl.glVertex2d(x, y);
                      gl.glEnd();
                     
                      while(x < x1){
-                         x = x + 1;
-                         if(d < 0){
-                             d = d + dy;
-                         }else{
-                             d = d + (dy-dx);
-                             y = y + 1;
-                         }
+                         x = (float)(x + (1 * 0.001));
+                         y = (float)(y + (1 * 0.001));
+                         
+                         
                          System.out.println("x: " + x + " " + " y: " + y);
+                         gl.glBegin (GL2.GL_POINTS);
                          gl.glVertex2d(x, y);
                          gl.glEnd();
                      }
-                 }else if(Math.abs(m) > 1){
+                 }else if(m == -1){
+                	 System.out.println("m is 1");
                      d = dy-(dx/2);
                      System.out.println(d);
-                     x = x0;
-                     y = y0;
-                    
+                     x = (float)(x0 * 0.001);
+                     y = (float)(y0 * 0.001);
+                     
+                     gl.glBegin (GL2.GL_POINTS);
                      gl.glVertex2d(x, y);
                      gl.glEnd();
                     
-                     while(y < y1){
-                         y = y + 1;
-                         if(d < 0){
-                             d = d + dx;
-                         }else{
-                             d = d + (dx-dy);
-                             x = x + 1;
-                         }
-                        System.out.println("x: " + x + " " + " y: " + y);
+                     while(x < x1){
+                         x = (float)(x + (1 * 0.001));
+                         y = (float)(y - (1 * 0.001));
+                         
+                         System.out.println("x: " + x + " " + " y: " + y);
+                         gl.glBegin (GL2.GL_POINTS);
+                         gl.glVertex2d(x, y);
+                         gl.glEnd();
+                     }
+                 }else if(m == 0){
+                	 System.out.println("m is 1");
+                     d = dy-(dx/2);
+                     System.out.println(d);
+                     x = (float)(x0 * 0.001);
+                     y = (float)(y0 * 0.001);
+                     
+                     gl.glBegin (GL2.GL_POINTS);
+                     gl.glVertex2d(x, y);
+                     gl.glEnd();
+                    
+                     while(x < x1){
+                         x = (float)(x + (1 * 0.001));
+                         //y = (float)(y - (1 * 0.001));
+                         
+                         System.out.println("x: " + x + " " + " y: " + y);
+                         gl.glBegin (GL2.GL_POINTS);
                          gl.glVertex2d(x, y);
                          gl.glEnd();
                      }
                  }
                  
+                 /*
+                 else if(true){
+                	 System.out.println("m is 1");
+                     d = dy-(dx/2);
+                     System.out.println(d);
+                     x = (float)(x0 * 0.001);
+                     y = (float)(y0 * 0.001);
+                     
+                     gl.glBegin (GL2.GL_POINTS);
+                     gl.glVertex2d(x, y);
+                     gl.glEnd();
+                    
+                     while(x < x1){
+                         x = (float)(x + (1 * 0.001));
+                         y = (float)(y - (1 * 0.001));
+                         
+                         System.out.println("x: " + x + " " + " y: " + y);
+                         gl.glBegin (GL2.GL_POINTS);
+                         gl.glVertex2d(x, y);
+                         gl.glEnd();
+                     }
+                 }
+                 
+                 */
+                 
+                 //scan.close();
                  
                  /*
                  if(x1 > x2){
