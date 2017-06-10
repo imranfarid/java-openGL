@@ -139,10 +139,8 @@ public class scan_conversion_line implements GLEventListener{
                          gl.glEnd();
                      }
                  }
-                 
-                 /*
-                 else if(true){
-                	 System.out.println("m is 1");
+                 else if(Float.isInfinite(m)){
+                	 System.out.println("m is Infinite");
                      d = dy-(dx/2);
                      System.out.println(d);
                      x = (float)(x0 * 0.001);
@@ -152,9 +150,9 @@ public class scan_conversion_line implements GLEventListener{
                      gl.glVertex2d(x, y);
                      gl.glEnd();
                     
-                     while(x < x1){
-                         x = (float)(x + (1 * 0.001));
-                         y = (float)(y - (1 * 0.001));
+                     while(y < y1){
+                         //x = (float)(x + (1 * 0.001));
+                         y = (float)(y + (1 * 0.001));
                          
                          System.out.println("x: " + x + " " + " y: " + y);
                          gl.glBegin (GL2.GL_POINTS);
@@ -163,68 +161,9 @@ public class scan_conversion_line implements GLEventListener{
                      }
                  }
                  
-                 */
+                 
                  
                  //scan.close();
-                 
-                 /*
-                 if(x1 > x2){
-                     System.out.println("x1 is greater");
-                 }else{
-                     System.out.println("x2 is greater");
-                 }
-               
-                 
-                 
-                 if(x1 > x2){
-                       float temp = x1;
-                       x1 = x2;
-                       x2 = temp;
-                       //temp = 0.0;
-                       temp = y1;
-                       y1 = y2;
-                       y2 = temp;
-                       
-                       //calculate slope
-                       m = ((y2-y1)/(x2-x1));
-                       System.out.println("x1 is greater " + m);
-                   }else{
-                      //m = (y2-y1)/(x2-x1);
-                       m = ((y2-y1)/(x2-x1));
-                       System.out.println("x2 is greater " + m);
-                   }
-                   System.out.println("end of for");
-                   
-                   if(m > -1 && m < 1){
-                      //x_init = x1;
-                       while(x1 < x2){
-                           
-                           x_next = (float) (x1 + (1* 0.0001)) ;
-                           y_next = (float) (y1 + (m * 0.0001)) ;
-                           System.out.println("loop1 m: " + m + " " + "x: " + x_next + " " + "y: " + y_next);
-                          gl.glBegin (GL2.GL_POINTS);
-                          gl.glVertex2d(x_next, y_next);
-                          gl.glEnd();
-                          x1 = x_next;
-                          y1 = y_next;
-                          
-                       }
-                   }else{
-                      //x_init = x1;
-                      while(y1 < y2){
-                          
-                          x_next = (float) (x1 + ((1/m) * 0.0001));
-                          y_next = (float) (y1 + (1 * 0.0001)) ;
-                          System.out.println("loop2 m: " + m + " " + "x: " + x_next + " " + "y: " + y_next);
-                          gl.glBegin (GL2.GL_POINTS);
-                         gl.glVertex2d(x_next, y_next);
-                         gl.glEnd();
-                         x1 = x_next;
-                         y1 = y_next;
-                         
-                      }
-                   }
-                   */
                
              }
           
