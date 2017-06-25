@@ -121,7 +121,8 @@ public class cohen_sutherland_task01 implements GLEventListener{
 		   code += left;
 	   }else if(x > x_max){
 		   code += right;
-	   }else if(y < y_min){
+	   }
+	   if(y < y_min){
 		   code += bottom;
 	   }else if(y > y_max){
 		   code += top;
