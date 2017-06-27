@@ -18,6 +18,8 @@ public class cohen_sutherland_task02 implements GLEventListener{
     // The canvas
     static GLCanvas glcanvas = new GLCanvas(capabilities);
     
+    public static final int TOP = 8, BOTTOM = 4, RIGHT = 2, LEFT = 1;
+    
    public static void main(String[] args) {
           //getting the capabilities object of GL2 profile
              
@@ -101,7 +103,7 @@ public class cohen_sutherland_task02 implements GLEventListener{
       //calculation
       Random rand = new Random();
       int outCode1, outCode2, rangeMin, rangeMax, i;
-      int TOP = 8, BOTTOM = 4, RIGHT = 2, LEFT = 1;
+      
       float x1, y1, x2, y2;
       double x_min, y_min, x_max, y_max;
       DecimalFormat df = new DecimalFormat("#.##");
@@ -131,24 +133,24 @@ public class cohen_sutherland_task02 implements GLEventListener{
 		  
 	      while(accept){
 	    	  if(outCode1 == 0 && outCode2 == 0){
-				  /*
+				  
 				  gl.glBegin (GL2.GL_LINES);
-			      //gl.glColor3f( 0.0f, 1.0f, 0.0f ); //fully accept green
+			      gl.glColor3f( 0.0f, 1.0f, 0.0f ); //fully accept green
 			      gl.glVertex3f(x1, y1, 0);
-			      gl.glVertex3f(x2, -y2, 0);
+			      gl.glVertex3f(x2, y2, 0);
 			      gl.glEnd();
-			      */
+			      
 			      System.out.println("fully accept");
 			      accept = false;
 			      
-			  }else if(!(outCode1 == 0 || outCode2 == 0)){
-				  /*
+			  }else if((outCode1 & outCode2) != 0){
+				  
 				  gl.glBegin (GL2.GL_LINES);
 			      gl.glColor3f( 1.0f, 0.0f, 0.0f ); //fully rejected red
 			      gl.glVertex3f(x1, y1, 0);
-			      gl.glVertex3f(x2, -y2, 0);
+			      gl.glVertex3f(x2, y2, 0);
 			      gl.glEnd();
-			      */
+			      
 			      System.out.println("fully rejected");
 			      accept = false;
 			      
